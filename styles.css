@@ -22,7 +22,7 @@ body {
     margin: auto;
     margin-top: 150px;
     border-radius: 20px;
-    padding-bottom: 300px;
+    padding-bottom: 70px;
     width: 75%;
     box-shadow: rgba(255, 241, 210, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
@@ -56,4 +56,58 @@ body {
 a {
     text-decoration: none;
     color: #FFB612;
+}
+
+#new-post {
+    width: 65%;
+    margin: auto;
+}
+
+label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#title-input {
+    width: 100%;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    border-radius: 0.2rem;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+
+#copy-input {
+    width: 100%;
+    padding: 5px 0 200px 0;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 0.2rem;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+
+#image-input {
+    margin-bottom: 20px;
+}
+
+#submit {
+    background-color: rgb(23, 23, 23);
+    border: none;
+    border-radius: 15px;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    color: #FFB612;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
