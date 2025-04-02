@@ -1,0 +1,4 @@
+Phase 1 - Develop landing page, list blog posts using Javascript and determine basic visual styling for the site
+Phase 2 - Develop the new post page with submission form, save the post and add form validation using JavaScript
+Phase 3 - Develop the existing post page, load post data for page using JavaScript, and implement edit functionality
+Phase 4 - Implement delete functionality for posts
