@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1 id="header-logo"><a href="index.html">Steelers by Nour</a></h1>
+    </div>
+    <section id="page-card">
+        <h2 id="title">New Post</h2>
+        <form id="new-post">
+            <label for="title-input" id="title-label">Title</label>
+            <input type="text" id="title-input" name="title-input" required></input>
+            <label for="copy-input" id="copy-label">Write your Post</label>
+            <textarea id="copy-input" name="copy-input" max-length="1000" required></textarea>
+            <label for="image-input" id="image-label">Upload an Image</label>
+            <input type="file" id="image-input" accept="image/*">
+            <button type="submit" id="submit" href=index.html>Submit</button>
+        </form>
+    </section>
+    <footer id="footer">
+        <p id="footer-text">&copy; 2025 Nour Harrak</p>
+    </footer>
+</body>
