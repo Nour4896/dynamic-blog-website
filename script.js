@@ -20,3 +20,17 @@ post.addEventListener("submit", function(event) {
         event.preventDefault();
     }
 });
+
+//Local Storage Saving - new-post.html
+const submit = document.getElementById("submit");
+const titleField = document.getElementById("title-input");
+const copyField = document.getElementById("copy-input");
+const image = document.getElementById("image-input")
+
+submit.addEventListener("click", savePost);
+
+function savePost() {
+    localStorage.setItem("title", titleField.value);
+    localStorage.setItem("copy", copyField.value);
+    localStorage.setItem("image", image.value);
+}
