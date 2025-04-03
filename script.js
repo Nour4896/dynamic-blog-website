@@ -42,11 +42,29 @@ if (list) {
     window.addEventListener("DOMContentLoaded", () => {
         var p = JSON.parse(localStorage.getItem("postDetails"));
         for (i = 0; i < p.length; i++) {
-        const article = document.createElement("h4");
+        const article = document.createElement("a");
+        article.href = "post.html";
+        article.id = "read_post";
+        article.value = i;
         const node = document.createTextNode(p[i].title);
         article.appendChild(node);
 
         list.appendChild(article);
         };
+    });
+};
+
+//Loading Posts - post.html
+document.addEventListener("click",  (e) => {
+    if (e.target.id.startsWith("read_post")) {
+        localStorage.setItem("content", JSON.parse(localStorage.getItem("postDetails"))[e.target.value].copy);
+    }
+});
+
+const copyContent = document.getElementById("copy");
+
+if (copy) {
+    window.addEventListener("DOMContentLoaded", () => {
+        console.log(localStorage.getItem("content"));
     });
 };
