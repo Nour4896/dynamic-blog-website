@@ -12,11 +12,16 @@ const titleField = document.getElementById("title-input");
 const copyField = document.getElementById("copy-input");
 const image = document.getElementById("image-input")
 
+let postId = 0
+if (localStorage.getItem("postDetails")) {
+    postId = JSON.parse(localStorage.getItem("postDetails")).length
+}
+
 if (submit) {
     submit.addEventListener("click",  () => {
         let posts = localStorage.getItem("postDetails") || '[]';
         posts = JSON.parse(posts);
-        posts.push({title: titleField.value, copy: copyField.value, image: image.value});
+        posts.push({title: titleField.value, copy: copyField.value, image: image.value, id: postId});
         localStorage.setItem("postDetails", JSON.stringify(posts));
     });
 
@@ -36,35 +41,30 @@ if (submit) {
 }
 
 //Adding Posts to Homepage - index.html
-const list = document.getElementById("posts");
 
-if (list) {
-    window.addEventListener("DOMContentLoaded", () => {
-        var p = JSON.parse(localStorage.getItem("postDetails"));
-        for (i = 0; i < p.length; i++) {
-        const article = document.createElement("a");
-        article.href = "post.html";
-        article.id = "read_post";
-        article.value = i;
-        const node = document.createTextNode(p[i].title);
-        article.appendChild(node);
-
-        list.appendChild(article);
+function render() {
+    const list = document.getElementById("posts");
+    if (localStorage.getItem("postDetails")){
+        for(const post of JSON.parse(localStorage.getItem("postDetails"))) {
+            const a = document.createElement("a");
+            a.href = `post.html?id=${post.id}`;
+            a.innerHTML = post.title;
+            list.appendChild(a);
         };
-    });
+    };
 };
 
 //Loading Posts - post.html
-document.addEventListener("click",  (e) => {
-    if (e.target.id.startsWith("read_post")) {
-        localStorage.setItem("content", JSON.parse(localStorage.getItem("postDetails"))[e.target.value].copy);
-    }
-});
+function callPost() {
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get("id");
+    
+    const posts = JSON.parse(localStorage.getItem("postDetails"));
+    let currentPost = posts.filter((post) => post.id === parseInt(id));
+    currentPost = currentPost[0];
+    const title = document.getElementById("title");
+    const copy = document.getElementById("copy");
 
-const copyContent = document.getElementById("copy");
-
-if (copy) {
-    window.addEventListener("DOMContentLoaded", () => {
-        console.log(localStorage.getItem("content"));
-    });
+    title.textContent = currentPost.title;
+    copy.textContent = currentPost.copy;
 };
