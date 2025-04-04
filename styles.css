@@ -142,3 +142,31 @@ label {
     color: #FFB612;
     text-decoration: none;
 }
+
+#edit {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+
+#delete {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    margin-top:
+    10px;
+}
+
+#save {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    margin-top:
+    10px;
+}
+
+#copy {
+    width: 80%;
+    margin: 0 auto;
+}

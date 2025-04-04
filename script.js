@@ -37,6 +37,7 @@ if (submit) {
             copyError.textContent = "Please enter content for your post!"
              event.preventDefault();
          }
+
     });
 }
 
@@ -67,4 +68,52 @@ function callPost() {
 
     title.textContent = currentPost.title;
     copy.textContent = currentPost.copy;
+};
+
+function editPost() {
+    const edit = document.getElementById("edit");
+    const posts = JSON.parse(localStorage.getItem("postDetails"));
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get("id");
+
+    edit.addEventListener("click", () => {
+        const copy = document.getElementById('copy');
+        const text = copy.textContent
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.id = "copy";
+        copy.replaceWith(textarea);
+
+        const title = document.getElementById('title');
+        const Text = title.textContent
+        const Textarea = document.createElement('textarea');
+        Textarea.value = Text;
+        Textarea.id = "title";
+        title.replaceWith(Textarea);
+
+        const button = document.getElementById('edit');
+        const buttonarea = document.createElement('button');
+        buttonarea.textContent = "Save";
+        buttonarea.id = "save";
+        button.replaceWith(buttonarea);
+
+        buttonarea.addEventListener('click', function() {
+            posts.splice(id, 1, {title: Textarea.value, copy: textarea.value, id: Number(id)});
+            localStorage.setItem("postDetails", JSON.stringify(posts));
+            window.location.href = "index.html";
+        });
+    });
+};
+
+function deletePost() {
+    const remove = document.getElementById("delete");
+    const posts = JSON.parse(localStorage.getItem("postDetails"));
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get("id");
+
+    remove.addEventListener("click", () => {
+        posts.splice(id, 1)
+        localStorage.setItem("postDetails", JSON.stringify(posts));
+        window.location.href = "index.html";
+    });
 };
